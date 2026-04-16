@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "init": "^0.1.2",
+    "mongoose": "^9.4.1",
+    "nanoid": "^5.1.9"
+  }
+}
