@@ -2,11 +2,12 @@ import express from "express";
 import { PORT } from "./config/env.js";
 import authRouter from "./routes/auth.routes.js";
 import userRouter from "./routes/user.routes.js";
-import subscriptionRouter from "./routes/subscription.route.js";
+import subscriptionRouter from "./routes/subscription.routes.js";
 import { connectToDatabase } from "./database/db.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import cookieParser from "cookie-parser";
 import { rateLimit } from "express-rate-limit";
+import workflowRouter from "./routes/workflow.routes.js";
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -39,6 +40,7 @@ app.use(limiter);
 app.use(`${BASE_URL}/auth`, authRouter);
 app.use(`${BASE_URL}/users`, userRouter);
 app.use(`${BASE_URL}/subscriptions`, subscriptionRouter);
+app.use(`${BASE_URL}/workflows`, workflowRouter);
 
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Hello World!", data: null });
